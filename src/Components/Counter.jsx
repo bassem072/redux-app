@@ -1,20 +1,27 @@
-import React, { useState } from 'react'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { DECREMENT, INCREMENT } from '../App/Actions/types';
 
 export default function Counter() {
 
-  const [count, setCount] = useState(0);
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
 
   function increment() {
-    setCount(count + 1);
+    dispatch({
+      type: INCREMENT,
+    });
   }
 
   function decrement() {
-    setCount(count - 1);
+    dispatch({
+      type: DECREMENT,
+    });
   }
 
   return (
     <div>
-        <h1>{count}</h1>
+        <h1>{state.count}</h1>
         <button onClick={increment}>Increment</button>
         <button onClick={decrement}>Decrement</button>
     </div>
