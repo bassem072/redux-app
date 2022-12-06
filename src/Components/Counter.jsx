@@ -4,7 +4,7 @@ import { decrementAction, decrementByValueAction, incrementAction, incrementByVa
 
 export default function Counter() {
 
-  const state = useSelector(state => state);
+  const state = useSelector(state => state.counter);
   const dispatch = useDispatch();
   const value = createRef();
 
