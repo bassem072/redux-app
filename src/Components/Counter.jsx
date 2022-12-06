@@ -9,19 +9,19 @@ export default function Counter() {
   const value = createRef();
 
   function increment() {
-    dispatch(incrementAction());
+    incrementAction(dispatch);
   }
 
   function decrement() {
-    dispatch(decrementAction());
+    decrementAction(dispatch);
   }
 
   function incrementByValue() {
-    dispatch(incrementByValueAction(value.current.value));
+    incrementByValueAction(value.current.value, dispatch);
   }
 
   function decrementByValue() {
-    dispatch(decrementByValueAction(value.current.value));
+    decrementByValueAction(value.current.value, dispatch);
   }
 
   return (
