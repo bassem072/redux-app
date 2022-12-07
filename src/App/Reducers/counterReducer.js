@@ -26,6 +26,7 @@ export default function CounterReducer(state = initState, action) {
                 ...state,
                 count: state.count - action.value,
             };
+        default:
+            return state;
     }
-    return state;
 }

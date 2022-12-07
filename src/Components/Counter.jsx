@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrementAction, decrementByValueAction, incrementAction, incrementByValueAction } from '../App/Actions/counterActions';
+import { decrement, decrementByValue, increment, incrementByValue } from '../App/Slice/counterSlice';
 
 export default function Counter() {
 
@@ -8,32 +8,32 @@ export default function Counter() {
   const dispatch = useDispatch();
   const value = createRef();
 
-  function increment() {
-    incrementAction(dispatch);
+  function handleIncrement() {
+    dispatch(increment);
   }
 
-  function decrement() {
-    decrementAction(dispatch);
+  function handleDecrement() {
+    dispatch(decrement);
   }
 
-  function incrementByValue() {
-    incrementByValueAction(value.current.value, dispatch);
+  function handleIncrementByValue() {
+    //dispatch(incrementByValue(value.current.value));
   }
 
-  function decrementByValue() {
-    decrementByValueAction(value.current.value, dispatch);
+  function handleDecrementByValue() {
+    //dispatch(decrementByValue(value.current.value));
   }
 
   return (
     <div>
         <h1>{state.count}</h1>
-        <button onClick={increment}>Increment</button>
-        <button onClick={decrement}>Decrement</button>
+        <button onClick={handleIncrement}>Increment</button>
+        <button onClick={handleDecrement}>Decrement</button>
         <br />
         <input type="number" placeholder= {0} ref = {value} />
         <br />
-        <button onClick={incrementByValue}>Increment By Value</button>
-        <button onClick={decrementByValue}>Decrement By Value</button>
+        <button onClick={handleIncrementByValue}>Increment By Value</button>
+        <button onClick={handleDecrementByValue}>Decrement By Value</button>
     </div>
   )
 }
